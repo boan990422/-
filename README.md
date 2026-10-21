@@ -101,10 +101,6 @@
                         <i class="fa-solid fa-laptop-code text-lg"></i>
                         <span>立即體驗互動軟體</span>
                     </button>
-                    <a href="#features" class="px-6 py-3.5 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 font-semibold rounded-2xl transition flex items-center space-x-2">
-                        <i class="fa-solid fa-circle-info"></i>
-                        <span>系統架構與功能</span>
-                    </a>
                 </div>
             </div>
 
@@ -112,7 +108,7 @@
             <div class="lg:col-span-5">
                 <div class="glass-card rounded-3xl p-6 shadow-2xl space-y-6 border border-slate-200/80 dark:border-slate-800">
                     <div class="relative rounded-2xl overflow-hidden shadow-md group">
-                        <img src="watermarked_img_7034365759675648951.jpg" alt="系統專案封面" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+                        <img src="watermarked_img_7034365759675648951.jpg" alt="系統專案封面" class="w-full h-64 object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-4">
                             <span class="text-white text-xs font-medium px-2.5 py-1 rounded-lg bg-indigo-600/80 backdrop-blur-md">
                                 <i class="fa-solid fa-image mr-1"></i> 專案代表封面圖
@@ -132,56 +128,6 @@
                             </button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Grid -->
-        <section id="features" class="space-y-6 pt-6">
-            <div class="text-center space-y-2">
-                <h3 class="text-2xl font-bold">四大核心功能模組</h3>
-                <p class="text-sm text-slate-500 dark:text-slate-400">完整重現從上傳、OCR辨識、智能分類到試卷產出的完整運作邏輯</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass-card p-6 rounded-3xl space-y-4 hover:border-indigo-500/50 transition">
-                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl font-bold">
-                        <i class="fa-solid fa-camera-retro"></i>
-                    </div>
-                    <h4 class="font-bold text-lg">1. OCR 智能辨識</h4>
-                    <p class="text-sm text-slate-600 dark:text-slate-300">
-                        支援拍照上傳題目，透過 Tesseract 與演習提取文字，精準辨識數學方程式與文字。
-                    </p>
-                </div>
-
-                <div class="glass-card p-6 rounded-3xl space-y-4 hover:border-indigo-500/50 transition">
-                    <div class="w-12 h-12 rounded-2xl bg-violet-500/10 text-violet-600 dark:text-violet-400 flex items-center justify-center text-xl font-bold">
-                        <i class="fa-solid fa-tags"></i>
-                    </div>
-                    <h4 class="font-bold text-lg">2. 自動分類標籤</h4>
-                    <p class="text-sm text-slate-600 dark:text-slate-300">
-                        利用 `jieba` 斷詞與關鍵字庫，自動貼上「三角函數」、「計算粗心」、「觀念混淆」等標籤。
-                    </p>
-                </div>
-
-                <div class="glass-card p-6 rounded-3xl space-y-4 hover:border-indigo-500/50 transition">
-                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl font-bold">
-                        <i class="fa-solid fa-print"></i>
-                    </div>
-                    <h4 class="font-bold text-lg">3. 試卷一鍵生成</h4>
-                    <p class="text-sm text-slate-600 dark:text-slate-300">
-                        自由勾選錯題範圍，系統自動排版並支援一鍵匯出 PDF 考前複習卷，提升刷題效率。
-                    </p>
-                </div>
-
-                <div class="glass-card p-6 rounded-3xl space-y-4 hover:border-indigo-500/50 transition">
-                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl font-bold">
-                        <i class="fa-solid fa-chart-pie"></i>
-                    </div>
-                    <h4 class="font-bold text-lg">4. 數據成效分析</h4>
-                    <p class="text-sm text-slate-600 dark:text-slate-300">
-                        透過圖表直觀呈現答錯率分佈、單元弱點與時間節省效益，展現理工科學量化精神。
-                    </p>
                 </div>
             </div>
         </section>
@@ -237,16 +183,27 @@
                                 <i class="fa-solid fa-image text-indigo-400"></i>
                                 <span>上傳或選擇錯題照片</span>
                             </h4>
-                            <div class="border-2 border-dashed border-slate-700 rounded-2xl p-6 text-center space-y-3 hover:border-indigo-500 transition cursor-pointer" onclick="simulateUpload()">
+                            
+                            <!--真實檔案上傳 input-->
+                            <input type="file" id="real-file-input" accept="image/*" class="hidden" onchange="handleRealImageUpload(event)">
+                            
+                            <div class="border-2 border-dashed border-slate-700 rounded-2xl p-6 text-center space-y-3 hover:border-indigo-500 transition cursor-pointer" onclick="document.getElementById('real-file-input').click()">
                                 <i class="fa-solid fa-cloud-arrow-up text-3xl text-indigo-400"></i>
                                 <div>
-                                    <p class="font-medium text-sm">點擊上傳或選擇測試題庫</p>
-                                    <p class="text-xs text-slate-500">支援 JPG, PNG (模擬手機拍照)</p>
+                                    <p class="font-medium text-sm">點此上傳你手機或電腦裡的圖片</p>
+                                    <p class="text-xs text-slate-500">支援 JPG, PNG 格式</p>
                                 </div>
                             </div>
+
+                            <!-- 預覽上傳的圖片顯示區 -->
+                            <div id="uploaded-preview-container" class="hidden space-y-2">
+                                <p class="text-xs text-slate-400">已上傳的圖片預覽：</p>
+                                <img id="uploaded-img-tag" src="" alt="上傳預覽" class="w-full h-32 object-cover rounded-xl border border-slate-800">
+                            </div>
+
                             <!-- Preset options -->
-                            <div class="space-y-2">
-                                <p class="text-xs text-slate-400 font-medium">快速載入範例題目：</p>
+                            <div class="space-y-2 pt-2">
+                                <p class="text-xs text-slate-400 font-medium">或快速載入內建範例題目：</p>
                                 <div class="grid grid-cols-3 gap-2">
                                     <button onclick="loadPreset(0)" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl text-xs font-medium text-left truncate">
                                         📐 三角函數證明
@@ -269,7 +226,7 @@
                                     <span>OCR 辨識與自動分類結果</span>
                                 </h4>
                                 <div id="ocr-result-box" class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-sm font-mono text-slate-300 min-h-[120px] flex items-center justify-center text-center text-slate-500">
-                                    請點擊左側範例或上傳圖片以啟動 OCR 分析...
+                                    請上傳照片或點擊內建範例以啟動 OCR 分析...
                                 </div>
                                 <div id="ocr-tags-box" class="flex flex-wrap gap-2"></div>
                             </div>
@@ -287,12 +244,8 @@
                             <h4 class="font-bold text-base">個人錯題資料庫</h4>
                             <span id="bank-count" class="px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-400 text-xs font-bold">共 3 題</span>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <input type="text" id="bank-search" oninput="filterBank()" placeholder="搜尋關鍵字或標籤..." class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-indigo-500 w-48">
-                        </div>
                     </div>
 
-                    <!-- Table of Questions -->
                     <div class="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden">
                         <table class="w-full text-left border-collapse text-xs">
                             <thead>
@@ -306,7 +259,6 @@
                                 </tr>
                             </thead>
                             <tbody id="bank-table-body" class="divide-y divide-slate-800">
-                                <!-- Populated by JS -->
                             </tbody>
                         </table>
                     </div>
@@ -315,45 +267,28 @@
                 <!-- TAB 3: Generator -->
                 <div id="tab-generator" class="space-y-6 hidden">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <!-- Control Sidebar -->
                         <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
                             <h4 class="font-bold text-sm text-indigo-400">試卷產生設定</h4>
                             <div class="space-y-3 text-xs">
-                                <div>
-                                    <label class="block text-slate-400 mb-1">選擇科目：</label>
-                                    <select class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-slate-200">
-                                        <option>高中數學 (全)</option>
-                                        <option>物理學 (力學與動量)</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-slate-400 mb-1">題目來源範圍：</label>
-                                    <select class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-slate-200">
-                                        <option>所有錯題庫 (共 3 題)</option>
-                                        <option>僅高頻錯題 (錯超過 2 次)</option>
-                                    </select>
-                                </div>
                                 <div>
                                     <label class="block text-slate-400 mb-1">試卷標題：</label>
                                     <input type="text" id="exam-title-input" value="期末複習：錯題精選演練卷" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-slate-200">
                                 </div>
                                 <button onclick="generateExamPreview()" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition">
-                                    <i class="fa-solid fa-rotate mr-1"></i> 重新排版與產生試卷
+                                    重新整理試卷排版
                                 </button>
                                 <button onclick="window.print()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition">
-                                    <i class="fa-solid fa-print mr-1"></i> 列印 / 儲存 PDF 試卷
+                                    列印 / 儲存 PDF 試卷
                                 </button>
                             </div>
                         </div>
 
-                        <!-- Print Preview Canvas -->
                         <div class="md:col-span-2 bg-white text-slate-900 p-8 rounded-2xl shadow-xl space-y-6 font-serif" id="print-section">
                             <div class="text-center border-b-2 border-slate-900 pb-4 space-y-1">
                                 <h2 id="preview-exam-title" class="text-xl font-bold">期末複習：錯題精選演練卷</h2>
                                 <p class="text-xs text-slate-600">班級：_______ 座號：_______ 姓名：___________ 得分：_______</p>
                             </div>
                             <div id="exam-questions-list" class="space-y-6 text-sm">
-                                <!-- Dynamically filled questions -->
                             </div>
                         </div>
                     </div>
@@ -383,7 +318,6 @@
 
     <!-- JavaScript Application Logic -->
     <script>
-        // Initialize QR Code
         const currentUrl = window.location.href;
         new QRCode(document.getElementById("qrcode-container"), {
             text: currentUrl,
@@ -401,17 +335,13 @@
                 link.download = 'smart-error-notebook-qr.png';
                 link.href = img.src;
                 link.click();
-            } else {
-                alert('QR Code 產生中，請稍後再試');
             }
         }
 
-        // Dark Mode Toggle
         function toggleDarkMode() {
             document.documentElement.classList.toggle('dark');
         }
 
-        // Modal Controls
         function openSystemModal() {
             document.getElementById('system-modal').classList.remove('hidden');
             initCharts();
@@ -423,7 +353,6 @@
             document.getElementById('system-modal').classList.add('hidden');
         }
 
-        // Tab Switching
         function switchTab(tabId) {
             ['tab-ocr', 'tab-bank', 'tab-generator', 'tab-analytics'].forEach(id => {
                 document.getElementById(id).classList.add('hidden');
@@ -444,42 +373,68 @@
             }
         }
 
-        // Question Bank Data
         let questionBank = [
-            { id: 1, subject: '高中數學', text: '設 $\\sin(\\theta) + \\cos(\\theta) = \\frac{1}{5}$，求 $\\sin^3(\\theta) + \\cos^3(\\theta)$ 之值。', tagChapter: '三角函數', tagError: '觀念混淆', count: 3 },
-            { id: 2, subject: '物理力學', text: '質量 $m$ 之物體置於傾角 $\\theta$ 之光滑斜面上，求其下滑加速度與正向力。', tagChapter: '牛頓運動定律', tagError: '計算粗心', count: 2 },
-            { id: 3, subject: '多項式', text: '已知多項式 $f(x)$ 除以 $x^2-3x+2$ 餘 $2x+1$，求除以 $x-1$ 之餘式。', tagChapter: '多項式函數', tagError: '審題不清', count: 1 }
+            { id: 1, subject: '高中數學', text: '設 sin(θ) + cos(θ) = 1/5，求 sin³(θ) + cos³(θ) 之值。', tagChapter: '三角函數', tagError: '觀念混淆', count: 3 },
+            { id: 2, subject: '物理力學', text: '質量 m 之物體置於傾角 θ 之光滑斜面上，求其下滑加速度。', tagChapter: '牛頓運動定律', tagError: '計算粗心', count: 2 },
+            { id: 3, subject: '多項式', text: '已知多項式 f(x) 除以 x²-3x+2 餘 2x+1，求除以 x-1 之餘式。', tagChapter: '多項式函數', tagError: '審題不清', count: 1 }
         ];
 
         let currentScannedData = null;
 
         const presets = [
             {
-                text: "設 $\\sin(\\theta) + \\cos(\\theta) = \\frac{1}{5}$，求 $\\sin^3(\\theta) + \\cos^3(\\theta)$ 之值。",
+                text: "設 sin(θ) + cos(θ) = 1/5，求 sin³(θ) + cos³(θ) 之值。",
                 chapters: ["三角函數", "代數恆等式"],
                 errors: ["觀念混淆", "公式代錯"]
             },
             {
-                text: "質量 $m$ 之物體置於傾角 $\\theta$ 之光滑斜面上，求其下滑加速度與正向力。",
+                text: "質量 m 之物體置於傾角 θ 之光滑斜面上，求其下滑加速度與正向力。",
                 chapters: ["牛頓運動定律", "力學分析"],
                 errors: ["計算粗心", "力圖畫錯"]
             },
             {
-                text: "已知多項式 $f(x)$ 除以 $x^2-3x+2$ 餘 $2x+1$，求除以 $x-1$ 之餘式。",
-                chapters: "多項式函數",
+                text: "已知多項式 f(x) 除以 x²-3x+2 餘 2x+1，求除以 x-1 之餘式。",
                 chapters: ["多項式函數", "餘式定理"],
                 errors: ["審題不清", "代數化簡失誤"]
             }
         ];
 
-        function simulateUpload() {
-            loadPreset(Math.floor(Math.random() * presets.length));
+        // 真實檔案上傳處理函式
+        function handleRealImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // 顯示圖片預覽
+                    document.getElementById('uploaded-preview-container').classList.remove('hidden');
+                    document.getElementById('uploaded-img-tag').src = e.target.result;
+                    
+                    // 模擬 OCR 解析剛上傳的檔案
+                    document.getElementById('ocr-result-box').innerHTML = `<p class="text-emerald-400 font-semibold">[OCR 成功載入自訂圖片]</p><p class="mt-2 text-slate-200">已成功讀取檔案：${file.name}</p><p class="text-xs text-slate-400 mt-1">AI 辨識文字：[自定義上傳題目內容辨識中...]</p>`;
+                    
+                    let tagsHtml = `<span class="px-2.5 py-1 rounded-lg bg-indigo-500/20 text-indigo-300 text-xs font-semibold">章節: 綜合演練</span><span class="px-2.5 py-1 rounded-lg bg-rose-500/20 text-rose-300 text-xs font-semibold">錯因: 自訂錯題</span>`;
+                    document.getElementById('ocr-tags-box').innerHTML = tagsHtml;
+
+                    currentScannedData = {
+                        text: `[自定義圖片] 檔案名稱：${file.name}`,
+                        chapters: ["綜合演練"],
+                        errors: ["自訂錯題"]
+                    };
+
+                    const btn = document.getElementById('save-to-bank-btn');
+                    btn.disabled = false;
+                    btn.classList.remove('bg-indigo-600/50', 'text-slate-400', 'cursor-not-allowed');
+                    btn.classList.add('bg-indigo-600', 'hover:bg-indigo-700', 'text-white');
+                }
+                reader.readAsDataURL(file);
+            }
         }
 
         function loadPreset(index) {
             const p = presets[index];
             currentScannedData = p;
             
+            document.getElementById('uploaded-preview-container').classList.add('hidden');
             document.getElementById('ocr-result-box').innerHTML = `<p class="text-indigo-300 font-semibold">[OCR 辨識成功 98.4%]</p><p class="mt-2 text-slate-200">${p.text}</p>`;
             
             let tagsHtml = '';
@@ -542,11 +497,6 @@
             renderBankTable();
         }
 
-        function filterBank() {
-            // Simplified filter hook
-            renderBankTable();
-        }
-
         function generateExamPreview() {
             const title = document.getElementById('exam-title-input').value;
             document.getElementById('preview-exam-title').innerText = title;
@@ -565,7 +515,6 @@
             listContainer.innerHTML = html;
         }
 
-        // Charts
         let chartTopicInstance = null;
         let chartTimeInstance = null;
 
