@@ -1,5 +1,3 @@
-# -
-上傳照片、自動標籤和匯出錯題卷功能，並進行準確率和省時效率評測
 <!DOCTYPE html>
 <html lang="zh-TW" class="dark">
 <head>
